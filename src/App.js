@@ -8,6 +8,7 @@ function App() {
   const [isDailyActive, setIsDailyActive] = useState(false);
   const [isWeeklyActive, setIsWeeklyActive] = useState(true);
   const [isMonthlyActive, setIsMonthlyActive] = useState(false);
+  const [type, setType] = useState("Week");
 
   return (
     <div className="App">
@@ -25,6 +26,7 @@ function App() {
               id="daily"
               onClick={() => {
                 setTimeType("daily");
+                setType("Day");
                 setIsDailyActive(true);
                 setIsWeeklyActive(false);
                 setIsMonthlyActive(false);
@@ -37,6 +39,7 @@ function App() {
               id="weekly"
               onClick={() => {
                 setTimeType("weekly");
+                setType("Week");
                 setIsDailyActive(false);
                 setIsWeeklyActive(true);
                 setIsMonthlyActive(false);
@@ -49,6 +52,7 @@ function App() {
               id="monthly"
               onClick={() => {
                 setTimeType("monthly");
+                setType("Month");
                 setIsDailyActive(false);
                 setIsWeeklyActive(false);
                 setIsMonthlyActive(true);
@@ -67,7 +71,9 @@ function App() {
                 <div className="more-details"></div>
               </div>
               <h3>{details[0].timeframes[timeType].current}hrs</h3>
-              <p>Last Week - {details[0].timeframes[timeType].previous}hrs</p>
+              <p>
+                Last {type} - {details[0].timeframes[timeType].previous}hrs
+              </p>
             </div>
           </div>
           <div className="aspect play">
@@ -77,7 +83,9 @@ function App() {
                 <div className="more-details"></div>
               </div>
               <h3>{details[1].timeframes[timeType].current}hrs</h3>
-              <p>Last Week - {details[1].timeframes[timeType].previous}hrs</p>
+              <p>
+                Last {type} - {details[1].timeframes[timeType].previous}hrs
+              </p>
             </div>
           </div>
           <div className="aspect study">
@@ -87,7 +95,9 @@ function App() {
                 <div className="more-details"></div>
               </div>
               <h3>{details[2].timeframes[timeType].current}hrs</h3>
-              <p>Last Week - {details[2].timeframes[timeType].previous}hrs</p>
+              <p>
+                Last {type} - {details[2].timeframes[timeType].previous}hrs
+              </p>
             </div>
           </div>
           <div className="aspect exercise">
@@ -97,7 +107,9 @@ function App() {
                 <div className="more-details"></div>
               </div>
               <h3>{details[3].timeframes[timeType].current}hrs</h3>
-              <p>Last Week - {details[3].timeframes[timeType].previous}hrs</p>
+              <p>
+                Last {type} - {details[3].timeframes[timeType].previous}hrs
+              </p>
             </div>
           </div>
           <div className="aspect social">
@@ -107,7 +119,9 @@ function App() {
                 <div className="more-details"></div>
               </div>
               <h3>{details[4].timeframes[timeType].current}hrs</h3>
-              <p>Last Week - {details[4].timeframes[timeType].previous}hrs</p>
+              <p>
+                Last {type} - {details[4].timeframes[timeType].previous}hrs
+              </p>
             </div>
           </div>
           <div className="aspect selfcare">
@@ -117,7 +131,9 @@ function App() {
                 <div className="more-details"></div>
               </div>
               <h3>{details[5].timeframes[timeType].current}hrs</h3>
-              <p>Last Week - {details[5].timeframes[timeType].previous}hrs</p>
+              <p>
+                Last {type} - {details[5].timeframes[timeType].previous}hrs
+              </p>
             </div>
           </div>
         </div>
