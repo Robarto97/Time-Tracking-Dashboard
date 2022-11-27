@@ -1,23 +1,127 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./styles.scss";
+import jeremyImg from "./images/image-jeremy.png";
+import details from "./data/data.json";
+import { useState } from "react";
 function App() {
+  const [data, setData] = useState(details);
+  const [timeType, setTimeType] = useState("weekly");
+  const [isDailyActive, setIsDailyActive] = useState(false);
+  const [isWeeklyActive, setIsWeeklyActive] = useState(true);
+  const [isMonthlyActive, setIsMonthlyActive] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <main>
+        <div className="report">
+          <div className="person">
+            <div className="img-wrapper">
+              <img src={jeremyImg} alt="Jeremy Robson" />
+            </div>
+            <p>Report for</p>
+            <h1>Jeremy Robson</h1>
+          </div>
+          <div className="report-type">
+            <button
+              id="daily"
+              onClick={() => {
+                setTimeType("daily");
+                setIsDailyActive(true);
+                setIsWeeklyActive(false);
+                setIsMonthlyActive(false);
+              }}
+              className={isDailyActive ? "active" : ""}
+            >
+              Daily
+            </button>
+            <button
+              id="weekly"
+              onClick={() => {
+                setTimeType("weekly");
+                setIsDailyActive(false);
+                setIsWeeklyActive(true);
+                setIsMonthlyActive(false);
+              }}
+              className={isWeeklyActive ? "active" : ""}
+            >
+              Weekly
+            </button>
+            <button
+              id="monthly"
+              onClick={() => {
+                setTimeType("monthly");
+                setIsDailyActive(false);
+                setIsWeeklyActive(false);
+                setIsMonthlyActive(true);
+              }}
+              className={isMonthlyActive ? "active" : ""}
+            >
+              Monthly
+            </button>
+          </div>
+        </div>
+        <div className="aspects">
+          <div className="aspect work">
+            <div className="aspect-details">
+              <div className="header">
+                <h2>{details[0].title}</h2>
+                <div className="more-details"></div>
+              </div>
+              <h3>{details[0].timeframes[timeType].current}hrs</h3>
+              <p>Last Week - {details[0].timeframes[timeType].previous}hrs</p>
+            </div>
+          </div>
+          <div className="aspect play">
+            <div className="aspect-details">
+              <div className="header">
+                <h2>{details[1].title}</h2>
+                <div className="more-details"></div>
+              </div>
+              <h3>{details[1].timeframes[timeType].current}hrs</h3>
+              <p>Last Week - {details[1].timeframes[timeType].previous}hrs</p>
+            </div>
+          </div>
+          <div className="aspect study">
+            <div className="aspect-details">
+              <div className="header">
+                <h2>{details[2].title}</h2>
+                <div className="more-details"></div>
+              </div>
+              <h3>{details[2].timeframes[timeType].current}hrs</h3>
+              <p>Last Week - {details[2].timeframes[timeType].previous}hrs</p>
+            </div>
+          </div>
+          <div className="aspect exercise">
+            <div className="aspect-details">
+              <div className="header">
+                <h2>{details[3].title}</h2>
+                <div className="more-details"></div>
+              </div>
+              <h3>{details[3].timeframes[timeType].current}hrs</h3>
+              <p>Last Week - {details[3].timeframes[timeType].previous}hrs</p>
+            </div>
+          </div>
+          <div className="aspect social">
+            <div className="aspect-details">
+              <div className="header">
+                <h2>{details[4].title}</h2>
+                <div className="more-details"></div>
+              </div>
+              <h3>{details[4].timeframes[timeType].current}hrs</h3>
+              <p>Last Week - {details[4].timeframes[timeType].previous}hrs</p>
+            </div>
+          </div>
+          <div className="aspect selfcare">
+            <div className="aspect-details">
+              <div className="header">
+                <h2>{details[5].title}</h2>
+                <div className="more-details"></div>
+              </div>
+              <h3>{details[5].timeframes[timeType].current}hrs</h3>
+              <p>Last Week - {details[5].timeframes[timeType].previous}hrs</p>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
